@@ -19,9 +19,22 @@ Usage
 
 .. code:: javascript
 
-    var comments = require('mongoose-comments');
+    // in model.js 
+    var mongoose=require('mongoose'),
+        comments = require('mongoose-comments');
 
     articleSchema.plugin(comments, {ref:'User'});
+
+    Article = mongoose.model('Article', articleSchema);
+   
+    // Then in controller.js
+    function addComment(req,res){
+        Article.addComment({'user':req.user, 'content':req.body.comment_content},
+        function(err, resp){
+            if (err) { return handleError(err);}
+            res.jsonp(resp);
+        });
+    }
 
 Schema
 ------
