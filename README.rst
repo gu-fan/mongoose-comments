@@ -10,7 +10,7 @@ github: http://github.com/rykka/mongoose-comments
 Install
 -------
 
-.. code::sh
+.. code:: sh
 
     npm install mongoose-comments 
 
